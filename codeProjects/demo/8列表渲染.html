@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="user in userList">
+                {{ user.username }},
+                {{ user.gender}},
+                {{ user.age}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const vm = {
+            data: function() {
+                return {
+                    userList: [
+                        {username: '张三', gender: '男', age: 19},
+                        {username: '里斯', gender: '男', age: 18},
+                        {username: '王五', gender: '男', age: 36},
+                        {username: '麻子', gender: '男', age: 25},
+                        {username: '瘸子', gender: '男', age: 79},
+                    ]
+                }
+            }
+        }
+        const app = Vue.createApp(vm)
+        app.mount("#app")
+    </script>
+    
+</body>
+</html>

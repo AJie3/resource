@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="username" :placeholder="'请输入姓名'"><br/>
+            <input type="radio" v-model="gender" value="男">男
+            <input type="radio" v-model="gender" value="女">女<br/>
+            <input type="text" v-model="age" :placeholder="'请输入年龄'"><br/>
+            <button @click="addUser">添加用户</button>
+        </div>
+        
+        <hr/>
+        <ul>
+            <li v-for="user in userList" :key="user.id">
+                <input type="checkbox">
+                {{ user.id}},
+                {{ user.username }},
+                {{ user.gender}},
+                {{ user.age}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const vm = {
+            data: function() {
+                return {
+                    userList: [
+                        {id: 1, username: '张三', gender: '男', age: 19},
+                        {id: 2, username: '里斯', gender: '男', age: 18},
+                        {id: 3, username: '王五', gender: '男', age: 36},
+                        {id: 4, username: '麻子', gender: '男', age: 25},
+                        {id: 5, username: '瘸子', gender: '男', age: 79},
+                    ],
+                    nextId: 6,
+                    username: '',
+                    gender: '',
+                    age: null 
+                }
+            },
+            methods: {
+                addUser(){
+                    this.userList.unshift({id: this.nextId, username: this.username, gender: this.gender, age: this.age})
+                    this.nextId++
+                }
+            }
+        }
+        const app = Vue.createApp(vm)
+        app.mount("#app")
+    </script>
+    
+</body>
+</html>

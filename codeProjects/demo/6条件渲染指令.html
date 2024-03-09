@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="flag = !flag">点我出现</button>
+        <p v-if="flag">成功了，v-if出来</p>
+        <p v-show="flag">成功了，v-show出来</p>
+    </div>
+
+    <script>
+        const vm = {
+            data: function() {
+                return {
+                    flag: false
+                }
+            }
+        }
+        const app = Vue.createApp(vm)
+        app.mount("#app")
+    </script>
+</body>
+</html>
